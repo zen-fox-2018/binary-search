@@ -23,22 +23,25 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
+function binary_search (search, array, awal, akhir) {
   // Your searching code
-  var awal = 0;
-  var akhir = array.length - 1;
-  while(awal <= akhir){
-    // debugger;
-    var tengah = Math.floor((awal + akhir) / 2);
-    if(array[tengah] === search){
-      return tengah;
-    } else if(search > array[tengah]){
-      awal = tengah + 1;
-    } else {
-      akhir = tengah - 1;
-    }
+  if(awal === undefined && akhir === undefined){
+    var awal = 0;
+    var akhir = array.length - 1;
   }
-  return -1;
+
+  if(awal <= akhir) {
+    var tengah = Math.floor((awal + akhir) / 2);
+    if(search === array[tengah]){
+      return tengah;
+    } else if(search > array[tengah]) {
+      return binary_search(search, array, tengah + 1, akhir);
+    } else {
+      return binary_search(search, array, awal, tengah - 1);
+    }
+  } else {
+    return -1;
+  }
 }
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
