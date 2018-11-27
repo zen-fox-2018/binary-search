@@ -16,38 +16,52 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
-  let start = 0;
-  let end = array.length - 1;
-  let middle = Math.floor(array.length/2);
+function binary_search (start, end , search, array) {
+  // let start = 0;
+  // let end = array.length - 1;
+  // let middle = Math.floor(array.length/2);
 
-  while(start <= end) {
-    middle = Math.floor((start+end)/2);
-    if(search === array[middle]) {
-      return middle
-    } else {
-      if(search < array[middle]) {
-        end = middle - 1
-      } else if (search > array[middle]) {
-        start = middle + 1;
-      }
-    }
+  let middle = Math.floor((start+end)/2);
+  if(array[middle] === search) {
+    return middle
+  } else if (start === end || end === middle) {
+    return - 1
+  } else if(search < array[middle]) {
+    // end = middle - 1
+    return binary_search (start, (middle - 1), search, array)
+  } else if (search > array[middle]) {
+    // start = middle + 1;
+    return binary_search ((middle + 1), end, search, array)
   }
-  return -1
 }
-  
+
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
-  
+
 // Driver code
-console.log(binary_search(8, arrayGenapSorted))
-console.log(binary_search(10, arrayGenapSorted))
-console.log(binary_search(33, arrayGenapSorted))
+console.log(binary_search(0, arrayGenapSorted.length - 1, 8, arrayGenapSorted))
+console.log(binary_search(0, arrayGenapSorted.length - 1, 10, arrayGenapSorted))
+console.log(binary_search(0, arrayGenapSorted.length - 1, 33, arrayGenapSorted))
 
 // console.log(binary_search(53, arrayGanjilSorted))
 // console.log(binary_search(3, arrayGanjilSorted))
 // console.log(binary_search(2, arrayGanjilSorted))
-  
+
 module.exports = {
   binary_search
 }
+
+// middle = Math.floor((start+end)/2);
+
+// while(start <= end) {
+//   if(search === array[middle]) {
+//     return middle
+//   } else {
+//     if(search < array[middle]) {
+//       end = middle - 1
+//     } else if (search > array[middle]) {
+//       start = middle + 1;
+//     }
+//   }
+// }
+// return -1
