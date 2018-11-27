@@ -64,6 +64,22 @@ function binary_search (search, array) {
   return tengah
 
 }
+//PSEUDOCODE
+/*
+  STORE `awal` with value 0
+  STORE `akhir` with length of `array` minus 1
+  STORE `tengah` with Math.floor((`awal` + `akhir`)/2)
+  WHILE `search` is not equals to `array` with index `tengah`
+    IF `tengah` is equals to `akhir` OR `tengah` equals to `awal`
+      THEN RETURN -1
+    IF `array` with index `tengah` is less than `search`
+      THEN SET `awal` to value `tengah`
+    ELSE IF `array` with index `tengah` is more than `search`
+      THEN SET `akhir` to value `tengah`
+    SET `tengah` to Math.floor((`awal` plus `akhir`)/2)
+  END WHILE
+  RETURN `tengah`
+*/
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
