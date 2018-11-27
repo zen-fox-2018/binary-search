@@ -21,28 +21,46 @@ function ownSort(arr) {
   return arr
 }
 console.log(ownSort(testArrayGanjil))
-function binary_search (search, array) {
-  // Your searching code
-  var start= 0
-  var end= array.length-1
+
+// function binary_search (search, array) {
+//   // Your searching code
+//   var start= 0
+//   var end= array.length-1
   
-  while(start <= end){
-    var middle = Math.floor((start +end)/2)
-      //  console.log(start,'ini start')
-      //   console.log(end,'ini end')
-      //   console.log(middle,'ini middle')
-      if(array[middle] === search){
-      return true
-      }
-      else if(search > array[middle]){
+//   while(start <= end){
+//     var middle = Math.floor((start +end)/2)
+//       //  console.log(start,'ini start')
+//       //   console.log(end,'ini end')
+//       //   console.log(middle,'ini middle')
+//       if(array[middle] === search){
+//       return true
+//       }
+//       else if(search > array[middle]){
         
-        start = middle +1
+//         start = middle +1
         
-      } else{
-        end=  middle -1
-      }
+//       } else{
+//         end=  middle -1
+//       }
+//   }
+//   return false
+// }
+
+//recursive
+function binary_search (search, array ,start = 0 ,end = array.length -1 ) {
+  // Your searching code
+  var middle = ~~((start+end)/2)
+  //console.log(start,'ini start',end,'ini end')
+  if(array[middle] == search){
+    return true
+  } else if(start >= end){
+    return false
   }
-  return false
+  else if(array[middle] < search){
+    return binary_search(search, array, start = (middle+1), end)
+  } else {
+    return binary_search(search, array, start, end = (middle - 1))
+  }
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
