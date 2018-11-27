@@ -38,7 +38,6 @@ function ownSort(array) {
         array[index] = temp
         index = j
       }
-
     }
   }
   return array
