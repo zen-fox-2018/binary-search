@@ -20,11 +20,11 @@ function ownSort(arr) {
 function binary_search (search, array) {
   let awal = 0
   let akhir = array.length-1
-  while(akhir >= awal){
+  while (akhir >= awal) {
     let tengah = Math.floor((awal+akhir)/2)
-    if(array[tengah] === search) {
+    if (array[tengah] === search) {
         return tengah
-    }else if (search < array[tengah]) {
+    } else if (search < array[tengah]) {
         akhir = tengah-1
     } else if (search > array[tengah]) {
         awal = tengah+1
