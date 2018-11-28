@@ -23,12 +23,12 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array, awal, akhir) {
+function binary_search (search, array, awal = 0, akhir = array.length - 1) {
   // Your searching code
-  if(awal === undefined && akhir === undefined){
-    var awal = 0;
-    var akhir = array.length - 1;
-  }
+  // if(awal === undefined && akhir === undefined){
+  //   var awal = 0;
+  //   var akhir = array.length - 1;
+  // }
 
   if(awal <= akhir) {
     var tengah = Math.floor((awal + akhir) / 2);
